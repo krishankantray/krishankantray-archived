@@ -27,7 +27,8 @@ import { makeStyles, ThemeProvider, useTheme, createMuiTheme } from '@material-u
 const darkTheme = createMuiTheme({
     palette: {
       // Switching the dark mode on is a single property value change.
-      type: 'dark',
+      type: "dark",
+      
     },
   });
 
@@ -35,38 +36,50 @@ const darkTheme = createMuiTheme({
 export default function navbar() {
   return (
   <div>
-    <AppBar position="static" alignItems='flex-start' direction="row" >
+    <ThemeProvider theme={darkTheme}>
+    <AppBar color="default" title="Krishankant Ray" position="fixed" alignItems='center' direction="row" >
       <Toolbar>
         <BrowserRouter>
           <Route exact path="/" component={Projects} />
           <Route path="/blog" component={Blog} />
           <Route path="/resume" component={Resume} />
 
-          <ThemeProvider theme={darkTheme}>
+          
 
-          <Grid alignItems='flex-start' direction="row">
+          <Grid alignItems='center' direction="row">
             <Tabs>
-              <IconButton  color="inherit" >
-              <MenuIcon fontSize='large' />
-              </IconButton>
-              <IconButton color="inherit" >
-              <ComputerIcon fontSize='large' />
-              </IconButton>
+              <tab>
+                <IconButton  color="inherit" >
+                  <MenuIcon fontSize='large' />
+                </IconButton>
+              </tab>
+              <tab>
+                <IconButton color="inherit" >
+                  <ComputerIcon fontSize='large' />
+                </IconButton>
+              </tab>
+              
+              
             </Tabs>
+            
             </Grid>
 
-            </ThemeProvider>
+            
+              <Typography variant="h5" >
+                Krishankant Ray
+              </Typography>
+              
 
             <div style={{flex:1}}></div>
 
             <Grid>
-          
+
             <Tabs>
               
             
               <Tab value={0} label="Projects" containerElement={ <Link to="/" className="item" /> } />
               <Tab value={1} label="Resume" containerElement={<Link to="/resume" className="item" />} />
-              <Tab value={1} label="Blog" containerElement={<Link to="/blog" className="item" />} />
+              <Tab value={2} label="Blog" containerElement={<Link to="/blog" className="item" />} />
               <IconButton  color="inherit" >
                 <Brightness4Icon  />
               </IconButton>
@@ -77,7 +90,7 @@ export default function navbar() {
         </BrowserRouter>
       </Toolbar>
     </AppBar>
-
+    </ThemeProvider>
 
 </div>
   );
