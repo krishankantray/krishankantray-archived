@@ -1,4 +1,4 @@
-import React, { useState, Component } from "react";
+import React from "react";
 
 import Blog from "./blog.js";
 import Resume from "./resume.js";
@@ -22,21 +22,11 @@ import ComputerIcon from "@material-ui/icons/Computer";
 import MenuIcon from '@material-ui/icons/Menu';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 import { render } from "@testing-library/react";
-import { makeStyles, ThemeProvider, useTheme, createMuiTheme } from '@material-ui/core/styles';
 
-const darkTheme = createMuiTheme({
-    palette: {
-      // Switching the dark mode on is a single property value change.
-      type: "dark",
-      
-    },
-  });
-
-
-export default function navbar() {
+export default function navbar(props) {
   return (
   <div>
-    <ThemeProvider theme={darkTheme}>
+    
     <AppBar color="default" title="Krishankant Ray" position="fixed" alignItems='center' direction="row" >
       <Toolbar>
         <BrowserRouter>
@@ -58,10 +48,9 @@ export default function navbar() {
                   <ComputerIcon fontSize='large' />
                 </IconButton>
               </tab>
-              
-              
             </Tabs>
-            
+
+
             </Grid>
 
             
@@ -77,10 +66,10 @@ export default function navbar() {
             <Tabs>
               
             
-              <Tab value={0} label="Projects" containerElement={ <Link to="/" className="item" /> } />
-              <Tab value={1} label="Resume" containerElement={<Link to="/resume" className="item" />} />
-              <Tab value={2} label="Blog" containerElement={<Link to="/blog" className="item" />} />
-              <IconButton  color="inherit" >
+              <Tab  label="Projects" containerElement={ <Link to="/" className="item" /> } />
+              <Tab  label="Resume" containerElement={<Link to="/resume" className="item" />} />
+              <Tab label="Blog" containerElement={<Link to="/blog" className="item" />} />
+              <IconButton  color="inherit" onClick={props.onToggleTheme}>
                 <Brightness4Icon  />
               </IconButton>
               
@@ -90,7 +79,7 @@ export default function navbar() {
         </BrowserRouter>
       </Toolbar>
     </AppBar>
-    </ThemeProvider>
+    
 
 </div>
   );

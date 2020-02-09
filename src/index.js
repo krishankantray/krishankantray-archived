@@ -6,19 +6,9 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 
-const darkTheme = createMuiTheme({
-    palette: {
-      // Switching the dark mode on is a single property value change.
-      type: 'dark',
-    },
-  });
 
 ReactDOM.render(
-
-<ThemeProvider theme={darkTheme}>
 <App />
-</ThemeProvider>
-
 , document.getElementById('root')
 
 );
