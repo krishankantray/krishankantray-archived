@@ -23,6 +23,9 @@ import ComputerIcon from "@material-ui/icons/Computer";
 import MenuIcon from '@material-ui/icons/Menu';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 import Drawer from '@material-ui/core/Drawer';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+
+
 
 const useStyles = makeStyles(theme=>({
 
@@ -61,7 +64,9 @@ export default function Navbar(props) {
     setOpen(!flip);
   };
 
-  
+  const handleClickAway = () => {
+    setOpen(false);
+  };
 
 
 
@@ -70,11 +75,11 @@ export default function Navbar(props) {
     
     <AppBar color="default" title="Krishankant Ray" position="fixed" alignItems='center' direction="row" >
       <Toolbar>
- 
+              <ClickAwayListener onClickAway={handleClickAway}>
                 <IconButton  color="inherit" onClick={handleDrawer}>
                   <MenuIcon fontSize='large' />
                 </IconButton>
-              
+                </ClickAwayListener>
              
                 <IconButton color="inherit" >
                   <ComputerIcon fontSize='large' />
